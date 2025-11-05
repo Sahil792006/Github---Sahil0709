@@ -1,0 +1,24 @@
+class Solution {
+    int checkpalindrome(String s, int i , int j){
+        int count = 0;
+        while(i>=0 && j<s.length() && s.charAt(i) == s.charAt(j)){
+            count++;
+            i--;
+            j++;
+        }
+        return count;
+    }
+    public int countSubstrings(String s) {
+        int count = 0;
+        for(int center = 0; center < s.length() ; center++){
+            int i = center;
+            int j = center;
+            int odd = checkpalindrome(s, i, j);
+            i = center;
+            j = center+1;
+            int even = checkpalindrome(s,i,j);
+            count += odd + even;
+        }
+        return count;
+    }
+}
